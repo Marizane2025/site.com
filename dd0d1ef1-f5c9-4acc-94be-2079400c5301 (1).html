@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Connection - Agência de Marketing</title>
+    <base target="_self">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@preline/preline@2.0.0/dist/preline.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#1e40af',
+                        accent: '#3b82f6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-all duration-300">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center" onclick="event.preventDefault(); scrollToSection('hero')">
+                        <span class="text-2xl font-bold text-primary dark:text-white">Global Connection</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-medium" onclick="event.preventDefault(); scrollToSection('services')">Serviços</a>
+                    <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-medium" onclick="event.preventDefault(); scrollToSection('about')">Sobre Nós</a>
+                    <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-medium" onclick="event.preventDefault(); scrollToSection('contact')">Contacto</a>
+                    <button onclick="toggleDarkMode()" class="p-2 rounded-full text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                </div>
+                
+                <div class="md:hidden">
+                    <button type="button" class="hs-collapse-toggle p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700" 
+                            data-hs-collapse="#mobile-menu" 
+                            aria-controls="mobile-menu" 
+                            aria-label="Toggle menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="mobile-menu" class="hs-collapse hidden md:hidden pb-4">
+                <div class="flex flex-col space-y-2">
+                    <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-medium" onclick="event.preventDefault(); scrollToSection('services')">Serviços</a>
+                    <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-medium" onclick="event.preventDefault(); scrollToSection('about')">Sobre Nós</a>
+                    <a href="#" class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-medium" onclick="event.preventDefault(); scrollToSection('contact')">Contacto</a>
+                    <button onclick="toggleDarkMode()" class="text-left text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary font-medium">
+                        Alternar Modo Escuro
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-bg text-white py-20 md:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="md:w-1/2">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">Impulsione o seu negócio com a nossa expertise em marketing</h1>
+                    <p class="text-xl mb-8">Soluções personalizadas para alavancar sua presença digital e aumentar suas vendas.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="scrollToSection('contact')" class="bg-primary hover:bg-secondary text-white font-bold py-3 px-6 rounded-lg transition-all">
+                            Fale Connosco
+                        </button>
+                        <button onclick="scrollToSection('services')" class="bg-transparent hover:bg-white/10 text-white font-bold py-3 px-6 border border-white rounded-lg transition-all">
+                            Nossos Serviços
+                        </button>
+                    </div>
+                </div>
+                <div class="hidden md:block md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Equipe de marketing" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Nossos Serviços</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Oferecemos soluções completas para impulsionar sua marca no mercado digital.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card bg-gray-50 dark:bg-gray-700 p-6 rounded-xl shadow-md transition-all">
+                    <div class="text-primary dark:text-accent text-4xl mb-4">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Marketing Digital</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Estratégias personalizadas para aumentar sua presença online e atrair mais clientes.</p>
+                </div>
+                
+                <div class="service-card bg-gray-50 dark:bg-gray-700 p-6 rounded-xl shadow-md transition-all">
+                    <div class="text-primary dark:text-accent text-4xl mb-4">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Desenvolvimento Web</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Sites profissionais e otimizados para conversão que refletem a essência da sua marca.</p>
+                </div>
+                
+                <div class="service-card bg-gray-50 dark:bg-gray-700 p-6 rounded-xl shadow-md transition-all">
+                    <div class="text-primary dark:text-accent text-4xl mb-4">
+                        <i class="fas fa-ad"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Gestão de Redes Sociais</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Criação e gestão de conteúdo estratégico para engajar seu público-alvo.</p>
+                </div>
+                
+                <div class="service-card bg-gray-50 dark:bg-gray-700 p-6 rounded-xl shadow-md transition-all">
+                    <div class="text-primary dark:text-accent text-4xl mb-4">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">SEO</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Otimização para motores de busca para aumentar sua visibilidade orgânica.</p>
+                </div>
+                
+                <div class="service-card bg-gray-50 dark:bg-gray-700 p-6 rounded-xl shadow-md transition-all">
+                    <div class="text-primary dark:text-accent text-4xl mb-4">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Email Marketing</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Campanhas eficazes para nutrir leads e fidelizar clientes.</p>
+                </div>
+                
+                <div class="service-card bg-gray-50 dark:bg-gray-700 p-6 rounded-xl shadow-md transition-all">
+                    <div class="text-primary dark:text-accent text-4xl mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Análise de Dados</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Relatórios detalhados para medir resultados e otimizar estratégias.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:gap-12">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Nossa equipe" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">Sobre a Global Connection</h2>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Somos uma agência de marketing digital sediada em Tete, Moçambique, dedicada a ajudar empresas de todos os tamanhos a alcançar seu pleno potencial online.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Com uma equipe de especialistas apaixonados por marketing e tecnologia, combinamos criatividade, estratégia e análise de dados para entregar resultados mensuráveis aos nossos clientes.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-300 mb-6">
+                        Nossa abordagem é centrada no cliente, entendendo profundamente seus objetivos de negócio para desenvolver soluções personalizadas que geram impacto real.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex items-center">
+                            <div class="bg-primary/10 dark:bg-primary/20 p-2 rounded-full mr-3">
+                                <i class="fas fa-check text-primary dark:text-accent"></i>
+                            </div>
+                            <span class="text-gray-700 dark:text-gray-300">+50 Clientes Satisfeitos</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="bg-primary/10 dark:bg-primary/20 p-2 rounded-full mr-3">
+                                <i class="fas fa-check text-primary dark:text-accent"></i>
+                            </div>
+                            <span class="text-gray-700 dark:text-gray-300">+100 Projetos Concluídos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">O que dizem nossos clientes</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Depoimentos de empresas que alcançaram resultados excepcionais com nossos serviços.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">"A Global Connection transformou nossa presença online. Em 3 meses, nossas vendas aumentaram em 150%."</p>
+                    <div class="flex items-center">
+                        <div class="bg-gray-200 dark:bg-gray-600 w-10 h-10 rounded-full mr-3 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Cliente" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white">Ana Sousa</h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">CEO, Moda Elegante</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">"Excelente trabalho na gestão das nossas redes sociais. Engajamento aumentou significativamente."</p>
+                    <div class="flex items-center">
+                        <div class="bg-gray-200 dark:bg-gray-600 w-10 h-10 rounded-full mr-3 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white">Carlos Mendes</h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Diretor, Restaurante Sabor & Arte</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 dark:bg-gray-700 p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 mr-2">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">"O site que desenvolveram superou nossas expectativas. Profissionais altamente qualificados."</p>
+                    <div class="flex items-center">
+                        <div class="bg-gray-200 dark:bg-gray-600 w-10 h-10 rounded-full mr-3 overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Cliente" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 dark:text-white">Beatriz Nhampossa</h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Gerente, Clínica Saúde Total</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Entre em Contacto</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">Estamos prontos para ajudar a levar seu negócio para o próximo nível.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Envie-nos uma mensagem</h3>
+                        <form id="contactForm" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nome</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Telefone</label>
+                                <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Mensagem</label>
+                                <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-primary hover:bg-secondary text-white font-bold py-3 px-6 rounded-lg transition-all">
+                                Enviar Mensagem
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md h-full">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Informações de Contacto</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-primary/10 dark:bg-primary/20 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-primary dark:text-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white mb-1">Localização</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">Tete, Moçambique</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary/10 dark:bg-primary/20 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-primary dark:text-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white mb-1">Telefone</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">+258 84 856 9587</p>
+                                    <button onclick="sendWhatsAppMessage()" class="mt-2 text-sm bg-green-500 hover:bg-green-600 text-white py-1 px-3 rounded-lg transition-all flex items-center">
+                                        <i class="fab fa-whatsapp mr-2"></i> Enviar mensagem no WhatsApp
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary/10 dark:bg-primary/20 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-primary dark:text-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white mb-1">Email</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">globalconenction.servicos@gmail.com</p>
+                                    <button onclick="sendEmail()" class="mt-2 text-sm bg-blue-500 hover:bg-blue-600 text-white py-1 px-3 rounded-lg transition-all flex items-center">
+                                        <i class="fas fa-paper-plane mr-2"></i> Enviar email
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-primary/10 dark:bg-primary/20 p-3 rounded-full mr-4">
+                                    <i class="fas fa-clock text-primary dark:text-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 dark:text-white mb-1">Horário de Funcionamento</h4>
+                                    <p class="text-gray-600 dark:text-gray-300">Segunda - Sexta: 8:00 - 17:00</p>
+                                    <p class="text-gray-600 dark:text-gray-300">Sábado: 9:00 - 13:00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-bold text-gray-900 dark:text-white mb-4">Siga-nos nas redes sociais</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-gray-200 dark:bg-gray-700 p-3 rounded-full text-gray-700 dark:text-gray-300 hover:bg-primary hover:text-white dark:hover:bg-primary transition-all" onclick="event.preventDefault()">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="bg-gray-200 dark:bg-gray-700 p-3 rounded-full text-gray-700 dark:text-gray-300 hover:bg-blue-400 hover:text-white dark:hover:bg-blue-400 transition-all" onclick="event.preventDefault()">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="bg-gray-200 dark:bg-gray-700 p-3 rounded-full text-gray-700 dark:text-gray-300 hover:bg-pink-600 hover:text-white dark:hover:bg-pink-600 transition-all" onclick="event.preventDefault()">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-gray-200 dark:bg-gray-700 p-3 rounded-full text-gray-700 dark:text-gray-300 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 transition-all" onclick="event.preventDefault()">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Global Connection</h3>
+                    <p class="text-gray-300">Sua agência de marketing digital em Tete, Moçambique, especializada em soluções personalizadas para impulsionar seu negócio.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-all" onclick="event.preventDefault(); scrollToSection('hero')">Início</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-all" onclick="event.preventDefault(); scrollToSection('services')">Serviços</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-all" onclick="event.preventDefault(); scrollToSection('about')">Sobre Nós</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-all" onclick="event.preventDefault(); scrollToSection('contact')">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Serviços</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-all" onclick="event.preventDefault()">Marketing Digital</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-all" onclick="event.preventDefault()">Desenvolvimento Web</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-all" onclick="event.preventDefault()">Gestão de Redes Sociais</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-primary transition-all" onclick="event.preventDefault()">SEO</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-4">Contacto</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                            <span class="text-gray-300">Tete, Moçambique</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-2 text-primary"></i>
+                            <span class="text-gray-300">+258 84 856 9587</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-primary"></i>
+                            <span class="text-gray-300">globalconenction.servicos@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-300 mb-4 md:mb-0">© 2023 Global Connection. Todos os direitos reservados.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-300 hover:text-primary transition-all" onclick="event.preventDefault()">Termos de Serviço</a>
+                    <a href="#" class="text-gray-300 hover:text-primary transition-all" onclick="event.preventDefault()">Política de Privacidade</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'));
+        }
+        
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.documentElement.classList.add('dark');
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+        
+        // WhatsApp message function
+        function sendWhatsAppMessage() {
+            const phoneNumber = '258848569587';
+            const message = 'Olá Global Connection, gostaria de obter mais informações sobre seus serviços.';
+            const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+        
+        // Email function
+        function sendEmail() {
+            const email = 'globalconenction.servicos@gmail.com';
+            const subject = 'Informações sobre serviços';
+            const body = 'Olá Global Connection,\n\nGostaria de obter mais informações sobre seus serviços.\n\nAtenciosamente,';
+            const url = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = url;
+        }
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the form data to a server
+            // For this example, we'll just show an alert
+            alert(`Obrigado, ${name}! Sua mensagem foi enviada com sucesso. Entraremos em contacto em breve.`);
+            
+            // Reset form
+            this.reset();
+        });
+        
+        // Initialize Preline components
+        document.addEventListener('DOMContentLoaded', function() {
+            window.HSStaticMethods.autoInit();
+        });
+        
+        // Prevent default anchor behavior
+        document.querySelectorAll('a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
